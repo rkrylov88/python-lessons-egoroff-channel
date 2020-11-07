@@ -353,14 +353,31 @@
 # Ваша задача состоит в том, чтобы решить несколько более общую задачу – а именно по числу n
 # найти количество простых чисел p из интервала n < p < 2n.
 
-a = int(input())
-s = []
-count = 1
-for i in range(a+1, 2*a+1):
-    for count in range(1, i + 1):
-        if i % count == 0:
-            s.append(count)
-print(len(s))
+def isprime(i):
+    if i < 0:
+        i = -1 * i
+    s = []
+    count = 1
+    if i == 0:
+        return True
+    elif i == 1:
+        return True
+    else:
+        while count * count <= i:
+            if i % count == 0:
+                s.append(count)
+            count += 1
+        if len(s) > 1:
+            return False
+        else:
+            return True
+
+n = int(input())
+my_list = []
+for i in range(n+1, 2 * n):
+    if isprime(i):
+        my_list.append(i)
+print(len(my_list))
 
 
 
